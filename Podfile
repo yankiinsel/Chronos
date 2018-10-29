@@ -6,5 +6,6 @@ target 'Chronos' do
   use_frameworks!
 
   # Pods for Chronos
+  pod "Material"
 
 end

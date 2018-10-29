@@ -7,8 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0F12910721877A1600C26F7B /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 0F12910621877A1600C26F7B /* .gitignore */; };
 		0F273E3F21862EF1005D23CD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F273E3E21862EF1005D23CD /* AppDelegate.swift */; };
-		0F273E4121862EF1005D23CD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F273E4021862EF1005D23CD /* ViewController.swift */; };
+		0F273E4121862EF1005D23CD /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F273E4021862EF1005D23CD /* TimerViewController.swift */; };
 		0F273E4421862EF1005D23CD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F273E4221862EF1005D23CD /* Main.storyboard */; };
 		0F273E4621862EF6005D23CD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0F273E4521862EF6005D23CD /* Assets.xcassets */; };
 		0F273E4921862EF6005D23CD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F273E4721862EF6005D23CD /* LaunchScreen.storyboard */; };
@@ -16,9 +17,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0F12910621877A1600C26F7B /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		0F273E3B21862EF1005D23CD /* Chronos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Chronos.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F273E3E21862EF1005D23CD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		0F273E4021862EF1005D23CD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		0F273E4021862EF1005D23CD /* TimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewController.swift; sourceTree = "<group>"; };
 		0F273E4321862EF1005D23CD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0F273E4521862EF6005D23CD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0F273E4821862EF6005D23CD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -43,6 +45,7 @@
 		0F273E3221862EF1005D23CD = {
 			isa = PBXGroup;
 			children = (
+				0F12910621877A1600C26F7B /* .gitignore */,
 				0F273E3D21862EF1005D23CD /* Chronos */,
 				0F273E3C21862EF1005D23CD /* Products */,
 				9C62F010622AC6C492D9EA9D /* Pods */,
@@ -62,7 +65,7 @@
 			isa = PBXGroup;
 			children = (
 				0F273E3E21862EF1005D23CD /* AppDelegate.swift */,
-				0F273E4021862EF1005D23CD /* ViewController.swift */,
+				0F273E4021862EF1005D23CD /* TimerViewController.swift */,
 				0F273E4221862EF1005D23CD /* Main.storyboard */,
 				0F273E4521862EF6005D23CD /* Assets.xcassets */,
 				0F273E4721862EF6005D23CD /* LaunchScreen.storyboard */,
@@ -99,6 +102,7 @@
 				0F273E3721862EF1005D23CD /* Sources */,
 				0F273E3821862EF1005D23CD /* Frameworks */,
 				0F273E3921862EF1005D23CD /* Resources */,
+				DA5EB5FD39C0435E3DF55D2B /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -147,6 +151,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0F12910721877A1600C26F7B /* .gitignore in Resources */,
 				0F273E4921862EF6005D23CD /* LaunchScreen.storyboard in Resources */,
 				0F273E4621862EF6005D23CD /* Assets.xcassets in Resources */,
 				0F273E4421862EF1005D23CD /* Main.storyboard in Resources */,
@@ -174,6 +179,26 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		DA5EB5FD39C0435E3DF55D2B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Chronos/Pods-Chronos-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Material/Material.framework",
+				"${BUILT_PRODUCTS_DIR}/Motion/Motion.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Material.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Motion.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Chronos/Pods-Chronos-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -181,7 +206,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0F273E4121862EF1005D23CD /* ViewController.swift in Sources */,
+				0F273E4121862EF1005D23CD /* TimerViewController.swift in Sources */,
 				0F273E3F21862EF1005D23CD /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -332,7 +357,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = H37F2SW7UJ;
 				INFOPLIST_FILE = Chronos/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.yankiinsel.Chronos;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -348,7 +376,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = H37F2SW7UJ;
 				INFOPLIST_FILE = Chronos/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.yankiinsel.Chronos;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;

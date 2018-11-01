@@ -8,6 +8,7 @@
 
 import UIKit
 import Material
+import AudioToolbox
 
 // Button Modes: Start, Pause
 enum ButtonMode {
@@ -121,7 +122,6 @@ class TimerViewController: UIViewController {
     // Cancel timer and reset UI
     @objc func cancelButtonTapped() {
         resetTimer()
-        isTimerActive = false
     }
     
     // Reset timer
@@ -129,6 +129,7 @@ class TimerViewController: UIViewController {
         timer.invalidate()
         seconds = 0
         buttonMode = .start
+        isTimerActive = false
     }
     
     // Start Timer
@@ -144,8 +145,9 @@ class TimerViewController: UIViewController {
     // Updite Timer
     @objc func updateTimer() {
         if seconds < 1 {
-            timer.invalidate()
+            resetTimer()
             //Send alert to indicate "time's up!"
+            AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
         } else {
             seconds -= 1
         }

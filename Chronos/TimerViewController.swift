@@ -19,8 +19,17 @@ class TimerViewController: UIViewController {
     
     // MARK: Variables
     
-    var seconds = 60
+    var seconds = 0 {
+        didSet {
+            updateTimerLabel()
+        }
+    }
     var timer = Timer()
+    var isTimerActive = false {
+        didSet {
+            updateTimerView()
+        }
+    }
     var isTimerRunning = false
     var buttonMode: ButtonMode = .start {
         didSet {
@@ -33,6 +42,7 @@ class TimerViewController: UIViewController {
     var timerLabel: UILabel!
     var startPauseButton: RaisedButton!
     var cancelButton: RaisedButton!
+    var timePicker: UIDatePicker!
     
     // MARK: ViewController Lifecycle
     
@@ -47,11 +57,13 @@ class TimerViewController: UIViewController {
         prepareTimerLabel()
         prepareStartPauseButton()
         prepareCancelButton()
+        prepareTimerPicker()
+        updateTimerView()
     }
     
     // Init Timer Label
     func prepareTimerLabel() {
-        timerLabel = UILabel(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 256))
+        timerLabel = UILabel(frame: CGRect(x: 0, y: 32, width: view.frame.width, height: 256))
         timerLabel.textAlignment = .center
         view.addSubview(timerLabel)
         updateTimerLabel()
@@ -60,7 +72,7 @@ class TimerViewController: UIViewController {
     
     // Init Start/Pause Button
     func prepareStartPauseButton() {
-        startPauseButton = RaisedButton(frame: CGRect(x: (view.frame.width/2) + ((view.frame.width/2)-128)/2, y: timerLabel.frame.height + 32, width: 128, height: 64))
+        startPauseButton = RaisedButton(frame: CGRect(x: (view.frame.width/2) + ((view.frame.width/2)-128)/2, y: timerLabel.frame.height + timerLabel.frame.origin.y + 32, width: 128, height: 64))
         view.addSubview(startPauseButton)
         startPauseButton.setTitle("Start", for: .normal)
         startPauseButton.titleColor = Color.blue.base
@@ -72,7 +84,7 @@ class TimerViewController: UIViewController {
     
     // Init Cancel Button
     func prepareCancelButton() {
-        cancelButton = RaisedButton(frame: CGRect(x: ((view.frame.width/2)-128)/2, y: timerLabel.frame.height + 32, width: 128, height: 64))
+        cancelButton = RaisedButton(frame: CGRect(x: ((view.frame.width/2)-128)/2, y: timerLabel.frame.height + timerLabel.frame.origin.y + 32, width: 128, height: 64))
         view.addSubview(cancelButton)
         cancelButton.setTitle("Cancel", for: .normal)
         cancelButton.titleColor = Color.red.base
@@ -80,6 +92,13 @@ class TimerViewController: UIViewController {
         cancelButton.addTarget(self, action: #selector(cancelButtonTapped), for: .touchUpInside)
         cancelButton.depthPreset = .depth2
         cancelButton.cornerRadiusPreset = .cornerRadius2
+    }
+    
+    func prepareTimerPicker() {
+        timePicker = UIDatePicker(frame: CGRect(x: 0, y: 32, width: view.frame.width, height: 256))
+        view.addSubview(timePicker)
+        timePicker.datePickerMode = .countDownTimer
+        timePicker.addTarget(self, action: #selector(timePicked), for: .valueChanged)
     }
 
     
@@ -102,18 +121,23 @@ class TimerViewController: UIViewController {
     // Cancel timer and reset UI
     @objc func cancelButtonTapped() {
         resetTimer()
+        isTimerActive = false
     }
     
     // Reset timer
     func resetTimer() {
         timer.invalidate()
-        seconds = 60
+        seconds = 0
         buttonMode = .start
-        updateTimerLabel()
     }
     
     // Start Timer
     func runTimer() {
+        if !isTimerActive {
+            seconds = Int(timePicker.countDownDuration)
+            isTimerActive = true
+        }
+        
         timer = Timer.scheduledTimer(timeInterval: 1, target: self,   selector: (#selector(updateTimer)), userInfo: nil, repeats: true)
     }
     
@@ -124,7 +148,6 @@ class TimerViewController: UIViewController {
             //Send alert to indicate "time's up!"
         } else {
             seconds -= 1
-            updateTimerLabel()
         }
     }
     
@@ -144,6 +167,15 @@ class TimerViewController: UIViewController {
         timerLabel.text = timeString(time: TimeInterval(seconds))
     }
     
+    @objc func timePicked(datePicker: UIDatePicker) {
+        seconds = Int(datePicker.countDownDuration)
+    }
+    
+    func updateTimerView() {
+            timePicker.isHidden = isTimerActive
+            timerLabel.isHidden = !isTimerActive
+    }
+    
     // MARK: Helper Methods
     
     // Format Time to String
@@ -153,6 +185,7 @@ class TimerViewController: UIViewController {
         let seconds = Int(time) % 60
         return String(format:"%02i:%02i:%02i", hours, minutes, seconds)
     }
+
 
 }
 

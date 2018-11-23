@@ -13,6 +13,11 @@
 		0F273E4421862EF1005D23CD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F273E4221862EF1005D23CD /* Main.storyboard */; };
 		0F273E4621862EF6005D23CD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0F273E4521862EF6005D23CD /* Assets.xcassets */; };
 		0F273E4921862EF6005D23CD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F273E4721862EF6005D23CD /* LaunchScreen.storyboard */; };
+		0F94982221A8574F005D6965 /* NibView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F94982121A8574F005D6965 /* NibView.swift */; };
+		0F94982421A8579B005D6965 /* CRTimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F94982321A8579B005D6965 /* CRTimerView.swift */; };
+		0F94982721A85822005D6965 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F94982621A85822005D6965 /* Enums.swift */; };
+		0F94982D21A85A09005D6965 /* CRTimerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F94982C21A85A09005D6965 /* CRTimerView.xib */; };
+		0F94982F21A8A22E005D6965 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F94982E21A8A22E005D6965 /* Colors.swift */; };
 		FBE467743B86DEE966BA0C0B /* Pods_Chronos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3398B64F768E67876974567B /* Pods_Chronos.framework */; };
 /* End PBXBuildFile section */
 
@@ -25,6 +30,11 @@
 		0F273E4521862EF6005D23CD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0F273E4821862EF6005D23CD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0F273E4A21862EF6005D23CD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0F94982121A8574F005D6965 /* NibView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibView.swift; sourceTree = "<group>"; };
+		0F94982321A8579B005D6965 /* CRTimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CRTimerView.swift; sourceTree = "<group>"; };
+		0F94982621A85822005D6965 /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
+		0F94982C21A85A09005D6965 /* CRTimerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CRTimerView.xib; sourceTree = "<group>"; };
+		0F94982E21A8A22E005D6965 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		19354A38E15251C0BB9F4114 /* Pods-Chronos.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Chronos.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Chronos/Pods-Chronos.debug.xcconfig"; sourceTree = "<group>"; };
 		19CEABF4CF2EDF35239874A0 /* Pods-Chronos.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Chronos.release.xcconfig"; path = "Pods/Target Support Files/Pods-Chronos/Pods-Chronos.release.xcconfig"; sourceTree = "<group>"; };
 		3398B64F768E67876974567B /* Pods_Chronos.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Chronos.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -65,13 +75,58 @@
 			isa = PBXGroup;
 			children = (
 				0F273E3E21862EF1005D23CD /* AppDelegate.swift */,
-				0F273E4021862EF1005D23CD /* TimerViewController.swift */,
+				0F94982521A85811005D6965 /* Constants */,
+				0F94982921A85995005D6965 /* Models */,
+				0F94982821A8598E005D6965 /* Controllers */,
+				0F94982A21A859A2005D6965 /* Views */,
 				0F273E4221862EF1005D23CD /* Main.storyboard */,
 				0F273E4521862EF6005D23CD /* Assets.xcassets */,
 				0F273E4721862EF6005D23CD /* LaunchScreen.storyboard */,
 				0F273E4A21862EF6005D23CD /* Info.plist */,
 			);
 			path = Chronos;
+			sourceTree = "<group>";
+		};
+		0F94982521A85811005D6965 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				0F94982621A85822005D6965 /* Enums.swift */,
+				0F94982E21A8A22E005D6965 /* Colors.swift */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
+		0F94982821A8598E005D6965 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				0F273E4021862EF1005D23CD /* TimerViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		0F94982921A85995005D6965 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		0F94982A21A859A2005D6965 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				0F94982321A8579B005D6965 /* CRTimerView.swift */,
+				0F94982B21A859AA005D6965 /* xib */,
+				0F94982121A8574F005D6965 /* NibView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		0F94982B21A859AA005D6965 /* xib */ = {
+			isa = PBXGroup;
+			children = (
+				0F94982C21A85A09005D6965 /* CRTimerView.xib */,
+			);
+			path = xib;
 			sourceTree = "<group>";
 		};
 		41649C65147857EB109ED98B /* Frameworks */ = {
@@ -155,6 +210,7 @@
 				0F273E4921862EF6005D23CD /* LaunchScreen.storyboard in Resources */,
 				0F273E4621862EF6005D23CD /* Assets.xcassets in Resources */,
 				0F273E4421862EF1005D23CD /* Main.storyboard in Resources */,
+				0F94982D21A85A09005D6965 /* CRTimerView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -207,7 +263,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				0F273E4121862EF1005D23CD /* TimerViewController.swift in Sources */,
+				0F94982F21A8A22E005D6965 /* Colors.swift in Sources */,
 				0F273E3F21862EF1005D23CD /* AppDelegate.swift in Sources */,
+				0F94982721A85822005D6965 /* Enums.swift in Sources */,
+				0F94982421A8579B005D6965 /* CRTimerView.swift in Sources */,
+				0F94982221A8574F005D6965 /* NibView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

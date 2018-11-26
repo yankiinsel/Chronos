@@ -13,3 +13,10 @@ enum ButtonMode {
     case start
     case pause
 }
+
+enum Mood {
+    case panicked
+    case relaxed
+    case stressed
+    case normal
+}

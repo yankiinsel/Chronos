@@ -10,11 +10,17 @@ import UIKit
 import Material
 import AudioToolbox
 
+protocol TimerViewDelegate {
+    func changeColor(mood: Mood)
+}
+
 // MARK: Variables
 
 class CRTimerView: NibView {
-
-    var seconds = 0 {
+    
+    var totalSeconds = 0
+    var currentMood = Mood.normal
+    var secondsRemaining = 0 {
         didSet {
             updateTimerLabel()
         }
@@ -38,6 +44,8 @@ class CRTimerView: NibView {
     @IBOutlet weak var startPauseButton: RaisedButton!
     @IBOutlet weak var cancelButton: RaisedButton!
     @IBOutlet weak var timePicker: UIDatePicker!
+    
+    var delegate: TimerViewDelegate!
 
     // MARK: ViewController Lifecycle
 
@@ -118,15 +126,18 @@ class CRTimerView: NibView {
     // Reset timer
     func resetTimer() {
         timer.invalidate()
-        seconds = 0
+        secondsRemaining = 0
+        totalSeconds = 0
         buttonMode = .start
         isTimerActive = false
+        delegate.changeColor(mood: .normal)
     }
 
     // Start Timer
     func runTimer() {
         if !isTimerActive {
-            seconds = Int(timePicker.countDownDuration)
+            totalSeconds = Int(timePicker.countDownDuration)
+            secondsRemaining = totalSeconds
             isTimerActive = true
         }
         
@@ -135,12 +146,12 @@ class CRTimerView: NibView {
 
     // Updite Timer
     @objc func updateTimer() {
-        if seconds < 1 {
+        vibrateIfNeeded()
+        changeColorIfNeeded()
+        if secondsRemaining < 1 {
             resetTimer()
-            //Send alert to indicate "time's up!"
-            AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
         } else {
-            seconds -= 1
+            secondsRemaining -= 1
         }
     }
 
@@ -157,11 +168,12 @@ class CRTimerView: NibView {
     }
 
     func updateTimerLabel() {
-        timerLabel.text = timeString(time: TimeInterval(seconds))
+        timerLabel.text = timeString(time: TimeInterval(secondsRemaining))
     }
 
     @objc func timePicked(datePicker: UIDatePicker) {
-        seconds = Int(datePicker.countDownDuration)
+        totalSeconds = Int(datePicker.countDownDuration)
+        secondsRemaining = totalSeconds
     }
 
     func updateTimerView() {
@@ -178,5 +190,40 @@ class CRTimerView: NibView {
         let seconds = Int(time) % 60
         return String(format:"%02i:%02i:%02i", hours, minutes, seconds)
     }
+    
+    func vibrateIfNeeded() {
+        
+        let minutesRemaining = (Double(secondsRemaining)/60)
+        let vibrationMilestones:[Double] = [45, 30, 15, 10, 5, 4, 3, 2, 1]
 
+        if (minutesRemaining.truncatingRemainder(dividingBy: 60) == 0) ||
+            (vibrationMilestones.contains(minutesRemaining)){
+            AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
+            AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
+            AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
+
+        }
+    }
+    
+    func changeColorIfNeeded() {
+        
+        if secondsRemaining == 0 {
+            return
+        }
+        
+        let remainingRatio = Double(totalSeconds) / Double(secondsRemaining)
+        
+        if remainingRatio <= 1.0  && currentMood != .relaxed {
+            currentMood = .relaxed
+            delegate.changeColor(mood: .relaxed)
+            
+        } else if remainingRatio <= 1.5  && remainingRatio > 1.0 && currentMood != .stressed {
+            currentMood = .stressed
+            delegate.changeColor(mood: .stressed)
+            
+        } else if remainingRatio <= 3.0 && remainingRatio > 1.5 && currentMood != .panicked {
+            currentMood = .panicked
+            delegate.changeColor(mood: .panicked)
+        }
+    }
 }

@@ -9,10 +9,9 @@
 import UIKit
 import Material
 
-
 class TimerViewController: UIViewController {
     
-    var timerView: CRTimerView!
+    @IBOutlet var timerView: CRTimerView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,7 +19,31 @@ class TimerViewController: UIViewController {
     }
     
     func prepareViews() {
-     view.backgroundColor = Colors.relaxed
+        view.backgroundColor = .white
+    }
+    
+    override func viewDidLayoutSubviews() {
+        timerView.delegate = self
+    }
+}
+
+extension TimerViewController: TimerViewDelegate {
+    
+    
+    func changeColor(mood: Mood) {
+        switch mood {
+        case .panicked:
+            view.backgroundColor = Colors.panicked
+            break
+        case .relaxed:
+            view.backgroundColor = Colors.relaxed
+            break
+        case .stressed:
+            view.backgroundColor = Colors.stressed
+            break
+        case .normal:
+            view.backgroundColor = .white
+        }
     }
 
 }

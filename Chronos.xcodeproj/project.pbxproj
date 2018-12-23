@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0F12910721877A1600C26F7B /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 0F12910621877A1600C26F7B /* .gitignore */; };
+		0F1C9E9E21CEDF3C00B13B27 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F1C9E9D21CEDF3C00B13B27 /* Notifications.swift */; };
 		0F273E3F21862EF1005D23CD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F273E3E21862EF1005D23CD /* AppDelegate.swift */; };
 		0F273E4121862EF1005D23CD /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F273E4021862EF1005D23CD /* TimerViewController.swift */; };
 		0F273E4421862EF1005D23CD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F273E4221862EF1005D23CD /* Main.storyboard */; };
@@ -18,11 +19,14 @@
 		0F94982721A85822005D6965 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F94982621A85822005D6965 /* Enums.swift */; };
 		0F94982D21A85A09005D6965 /* CRTimerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F94982C21A85A09005D6965 /* CRTimerView.xib */; };
 		0F94982F21A8A22E005D6965 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F94982E21A8A22E005D6965 /* Colors.swift */; };
+		0FCBA19321CE662D00859CEE /* SocketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FCBA19221CE662D00859CEE /* SocketViewController.swift */; };
+		0FCBA19521CEB4F000859CEE /* SocketService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FCBA19421CEB4F000859CEE /* SocketService.swift */; };
 		FBE467743B86DEE966BA0C0B /* Pods_Chronos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3398B64F768E67876974567B /* Pods_Chronos.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0F12910621877A1600C26F7B /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		0F1C9E9D21CEDF3C00B13B27 /* Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
 		0F273E3B21862EF1005D23CD /* Chronos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Chronos.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F273E3E21862EF1005D23CD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0F273E4021862EF1005D23CD /* TimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewController.swift; sourceTree = "<group>"; };
@@ -35,6 +39,8 @@
 		0F94982621A85822005D6965 /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		0F94982C21A85A09005D6965 /* CRTimerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CRTimerView.xib; sourceTree = "<group>"; };
 		0F94982E21A8A22E005D6965 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		0FCBA19221CE662D00859CEE /* SocketViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketViewController.swift; sourceTree = "<group>"; };
+		0FCBA19421CEB4F000859CEE /* SocketService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketService.swift; sourceTree = "<group>"; };
 		19354A38E15251C0BB9F4114 /* Pods-Chronos.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Chronos.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Chronos/Pods-Chronos.debug.xcconfig"; sourceTree = "<group>"; };
 		19CEABF4CF2EDF35239874A0 /* Pods-Chronos.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Chronos.release.xcconfig"; path = "Pods/Target Support Files/Pods-Chronos/Pods-Chronos.release.xcconfig"; sourceTree = "<group>"; };
 		3398B64F768E67876974567B /* Pods_Chronos.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Chronos.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -92,6 +98,7 @@
 			children = (
 				0F94982621A85822005D6965 /* Enums.swift */,
 				0F94982E21A8A22E005D6965 /* Colors.swift */,
+				0F1C9E9D21CEDF3C00B13B27 /* Notifications.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -100,6 +107,8 @@
 			isa = PBXGroup;
 			children = (
 				0F273E4021862EF1005D23CD /* TimerViewController.swift */,
+				0FCBA19221CE662D00859CEE /* SocketViewController.swift */,
+				0FCBA19421CEB4F000859CEE /* SocketService.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -244,11 +253,15 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-Chronos/Pods-Chronos-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Material/Material.framework",
 				"${BUILT_PRODUCTS_DIR}/Motion/Motion.framework",
+				"${BUILT_PRODUCTS_DIR}/Socket.IO-Client-Swift/SocketIO.framework",
+				"${BUILT_PRODUCTS_DIR}/Starscream/Starscream.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Material.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Motion.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SocketIO.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Starscream.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -262,7 +275,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0FCBA19321CE662D00859CEE /* SocketViewController.swift in Sources */,
 				0F273E4121862EF1005D23CD /* TimerViewController.swift in Sources */,
+				0FCBA19521CEB4F000859CEE /* SocketService.swift in Sources */,
+				0F1C9E9E21CEDF3C00B13B27 /* Notifications.swift in Sources */,
 				0F94982F21A8A22E005D6965 /* Colors.swift in Sources */,
 				0F273E3F21862EF1005D23CD /* AppDelegate.swift in Sources */,
 				0F94982721A85822005D6965 /* Enums.swift in Sources */,

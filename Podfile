@@ -7,5 +7,7 @@ target 'Chronos' do
 
   # Pods for Chronos
   pod "Material"
+  pod 'Socket.IO-Client-Swift', '~> 13.3.0'
+
 
 end

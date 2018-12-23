@@ -6,19 +6,27 @@ PODS:
   - Motion (1.4.2):
     - Motion/Core (= 1.4.2)
   - Motion/Core (1.4.2)
+  - Socket.IO-Client-Swift (13.3.1):
+    - Starscream (~> 3.0.2)
+  - Starscream (3.0.6)
 
 DEPENDENCIES:
   - Material
+  - Socket.IO-Client-Swift (~> 13.3.0)
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
     - Material
     - Motion
+    - Socket.IO-Client-Swift
+    - Starscream
 
 SPEC CHECKSUMS:
   Material: e8cceb3577ae4ee3811ec033a34ab4a3dc8c084c
   Motion: 93605fd4dffe44203b56949eb0bc73a9521af7b6
+  Socket.IO-Client-Swift: 79f8f85fa44881838175a20f9bd2c32bef2c9d37
+  Starscream: ef3ece99d765eeccb67de105bfa143f929026cf5
 
-PODFILE CHECKSUM: b6967db632cc421e3f8ba4fab7026930e52b887c
+PODFILE CHECKSUM: c6523e4e1365741a942c9b007972cb2b6502c4c9
 
 COCOAPODS: 1.5.0

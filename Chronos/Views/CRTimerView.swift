@@ -37,6 +37,25 @@ class CRTimerView: NibView {
             updateStartPauseButton()
         }
     }
+    
+    var timerMode = TimerMode.solo {
+        didSet {
+            switch timerMode {
+            case .moderator:
+                timePicker.isHidden = isTimerActive
+                timerLabel.isHidden = !isTimerActive
+            case .presenter:
+                timePicker.isHidden = true
+                timerLabel.isHidden = false
+                startPauseButton.isHidden = true
+                cancelButton.isHidden = true
+            case .solo:
+                timePicker.isHidden = isTimerActive
+                timerLabel.isHidden = !isTimerActive
+                
+            }
+        }
+    }
 
     // MARK: UI Elements
 
@@ -52,25 +71,36 @@ class CRTimerView: NibView {
     override func awakeFromNib() {
         super.awakeFromNib()
         prepareViews()
+        prepareNotifications()
+
     }
-    
-    func viewDidLoad() {
-        prepareViews()
-        translatesAutoresizingMaskIntoConstraints = false
+
+    override func removeFromSuperview() {
+        removeNotifications()
     }
 
     // MARK: Prepare UI
 
-    func prepareViews() {
+    fileprivate func prepareViews() {
         prepareTimerLabel()
         prepareStartPauseButton()
         prepareCancelButton()
         prepareTimerPicker()
         updateTimerView()
     }
+    
+    
+    fileprivate func prepareNotifications() {
+        NotificationCenter.default.addObserver(self, selector: #selector(cancelNotificationHandler(_:)), name: Notifications.cancelTimer.name, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(startPauseNotificationHandler(_:)), name: Notifications.startPauseTimer.name, object: nil)
+    }
+    
+    fileprivate func removeNotifications() {
+        NotificationCenter.default.removeObserver(self)
+    }
 
     // Init Timer Label
-    func prepareTimerLabel() {
+    fileprivate func prepareTimerLabel() {
         timerLabel.textAlignment = .center
         updateTimerLabel()
         timerLabel.fontSize = 48
@@ -81,7 +111,7 @@ class CRTimerView: NibView {
         startPauseButton.setTitle("Start", for: .normal)
         startPauseButton.titleColor = .white
         startPauseButton.backgroundColor = Colors.spaceGray
-        startPauseButton.addTarget(self, action: #selector(startPauseButtonTapped), for: .touchUpInside)
+        startPauseButton.addTarget(self, action: #selector(startPauseButtonHandler), for: .touchUpInside)
         startPauseButton.depthPreset = .depth4
         startPauseButton.cornerRadiusPreset = .cornerRadius4
     }
@@ -91,7 +121,7 @@ class CRTimerView: NibView {
         cancelButton.setTitle("Cancel", for: .normal)
         cancelButton.titleColor = .white
         cancelButton.backgroundColor = Colors.spaceGray
-        cancelButton.addTarget(self, action: #selector(cancelButtonTapped), for: .touchUpInside)
+        cancelButton.addTarget(self, action: #selector(cancelButtonHandler), for: .touchUpInside)
         cancelButton.depthPreset = .depth4
         cancelButton.cornerRadiusPreset = .cornerRadius4
     }
@@ -103,9 +133,17 @@ class CRTimerView: NibView {
 
 
     // MARK: Functions
+    
+    @objc func startPauseNotificationHandler(_ notification: Notification) {
+        if timerMode != .presenter { return }
+        if let timer = notification.userInfo?["timer"] as? Int {
+            timePicker.countDownDuration = Double(timer)
+            startPauseButtonHandler()
+        }
+    }
 
     // Start timer if it is paused. Pause if it is running
-    @objc func startPauseButtonTapped() {
+    @objc func startPauseButtonHandler() {
         switch buttonMode {
         case .start:
             buttonMode = .pause
@@ -116,11 +154,25 @@ class CRTimerView: NibView {
             timer.invalidate()
             break
         }
+        if timerMode == .moderator {
+            print(Int(timePicker.countDownDuration))
+            SocketService.shared.socket.emit("startPauseButtonHandler", [SocketService.shared.room, Int(timePicker.countDownDuration)])
+        }
+    }
+    
+    @objc func cancelNotificationHandler(_ notification: Notification) {
+        if timerMode != .presenter { return }
+        cancelButtonHandler()
     }
 
     // Cancel timer and reset UI
-    @objc func cancelButtonTapped() {
+    @objc func cancelButtonHandler() {
+        
         resetTimer()
+        
+        if timerMode == .moderator {
+            SocketService.shared.socket.emit("cancelButtonHandler", SocketService.shared.room)
+        }
     }
 
     // Reset timer
@@ -177,6 +229,10 @@ class CRTimerView: NibView {
     }
 
     func updateTimerView() {
+        
+        if timerMode == .presenter {
+            return
+        }
         timePicker.isHidden = isTimerActive
         timerLabel.isHidden = !isTimerActive
     }
@@ -199,9 +255,6 @@ class CRTimerView: NibView {
         if (minutesRemaining.truncatingRemainder(dividingBy: 60) == 0) ||
             (vibrationMilestones.contains(minutesRemaining)){
             AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
-            AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
-            AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
-
         }
     }
     
@@ -211,17 +264,17 @@ class CRTimerView: NibView {
             return
         }
         
-        let remainingRatio = Double(totalSeconds) / Double(secondsRemaining)
+        let remainingRatio = Double(secondsRemaining) / Double(totalSeconds)
         
-        if remainingRatio <= 1.0  && currentMood != .relaxed {
+        if remainingRatio > 0.66  && currentMood != .relaxed {
             currentMood = .relaxed
             delegate.changeColor(mood: .relaxed)
             
-        } else if remainingRatio <= 1.5  && remainingRatio > 1.0 && currentMood != .stressed {
+        } else if remainingRatio <= 0.66  && remainingRatio > 0.33 && currentMood != .stressed {
             currentMood = .stressed
             delegate.changeColor(mood: .stressed)
             
-        } else if remainingRatio <= 3.0 && remainingRatio > 1.5 && currentMood != .panicked {
+        } else if remainingRatio <= 0.33 && currentMood != .panicked {
             currentMood = .panicked
             delegate.changeColor(mood: .panicked)
         }

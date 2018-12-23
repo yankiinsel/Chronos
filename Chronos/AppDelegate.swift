@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Material
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -15,7 +16,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+
+        self.window = UIWindow(frame: UIScreen.main.bounds)
+        
+        let nav1 = UINavigationController()
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let socketVC = storyboard.instantiateViewController(withIdentifier: "SocketVC") as! SocketViewController
+        nav1.viewControllers = [socketVC]
+        
+        let timerVC = storyboard.instantiateViewController(withIdentifier: "TimerVC") as! TimerViewController
+        timerVC.timerMode = .solo
+        let tabBarController = UITabBarController()
+        timerVC.tabBarItem = UITabBarItem(title: "Timer", image: Icon.add, tag: 0)
+        nav1.tabBarItem = UITabBarItem(title: "Session", image: Icon.addCircleOutline, tag: 1)
+        let controllers = [timerVC, nav1]
+        tabBarController.viewControllers = controllers
+        
+        self.window!.rootViewController = tabBarController
+        
         return true
     }
 

@@ -20,3 +20,9 @@ enum Mood {
     case stressed
     case normal
 }
+
+enum TimerMode {
+    case solo
+    case moderator
+    case presenter
+}

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="0A1-mY-l7p">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -9,10 +9,65 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Socket View Controller-->
+        <scene sceneID="Wxw-Er-MsE">
+            <objects>
+                <viewController storyboardIdentifier="SocketVC" id="0A1-mY-l7p" customClass="SocketViewController" customModule="Chronos" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="nQe-pj-GnR">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TKN-IG-BEh" customClass="TextField" customModule="Material">
+                                <rect key="frame" x="123.5" y="199.5" width="128" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="32" id="fJO-xj-Dre"/>
+                                    <constraint firstAttribute="width" constant="128" id="uDa-HB-mVY"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="43" translatesAutoresizingMaskIntoConstraints="NO" id="2sW-Sj-LfK">
+                                <rect key="frame" x="38" y="295.5" width="299" height="32"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I06-dU-qJh" customClass="FlatButton" customModule="Material">
+                                        <rect key="frame" x="0.0" y="0.0" width="128" height="32"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="128" id="e39-QY-n0U"/>
+                                            <constraint firstAttribute="height" constant="32" id="vHL-E6-oz3"/>
+                                        </constraints>
+                                        <state key="normal" title="Button"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gSY-Ze-tby" customClass="FlatButton" customModule="Material">
+                                        <rect key="frame" x="171" y="0.0" width="128" height="32"/>
+                                        <state key="normal" title="Button"/>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="2sW-Sj-LfK" firstAttribute="top" secondItem="TKN-IG-BEh" secondAttribute="bottom" constant="64" id="6nn-b4-Xlm"/>
+                            <constraint firstItem="TKN-IG-BEh" firstAttribute="centerX" secondItem="34P-mN-dei" secondAttribute="centerX" id="F98-zJ-NXo"/>
+                            <constraint firstItem="TKN-IG-BEh" firstAttribute="centerY" secondItem="34P-mN-dei" secondAttribute="centerY" constant="-128" id="SNr-bH-Ncq"/>
+                            <constraint firstItem="2sW-Sj-LfK" firstAttribute="centerX" secondItem="TKN-IG-BEh" secondAttribute="centerX" id="YAZ-Db-X78"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="34P-mN-dei"/>
+                    </view>
+                    <connections>
+                        <outlet property="createButton" destination="I06-dU-qJh" id="Se2-c7-Upn"/>
+                        <outlet property="joinButton" destination="gSY-Ze-tby" id="WW2-43-IMq"/>
+                        <outlet property="sessionCodeLabel" destination="TKN-IG-BEh" id="DKa-wr-zTu"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HPR-nb-RLD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-863" y="133"/>
+        </scene>
         <!--Timer View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="TimerViewController" customModule="Chronos" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TimerVC" id="BYZ-38-t0r" customClass="TimerViewController" customModule="Chronos" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -39,6 +94,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="-73" y="133"/>
         </scene>
     </scenes>
 </document>

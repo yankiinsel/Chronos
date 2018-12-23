@@ -13,12 +13,18 @@ class TimerViewController: UIViewController {
     
     @IBOutlet var timerView: CRTimerView!
     
+    var timerMode = TimerMode.solo
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         prepareViews()
     }
     
-    func prepareViews() {
+    override func viewWillAppear(_ animated: Bool) {
+        timerView.timerMode = timerMode
+    }
+    
+    fileprivate func prepareViews() {
         view.backgroundColor = .white
     }
     

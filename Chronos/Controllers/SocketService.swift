@@ -12,7 +12,7 @@ import SocketIO
 class SocketService {
     
     static let shared = SocketService()
-    let manager = SocketManager(socketURL: URL(string: "http://chronos-server.now.sh")!, config: [.log(false)])
+    let manager = SocketManager(socketURL: URL(string: "https://server-chronos.now.sh/")!, config: [.log(false)])
     var socket: SocketIOClient!
     var room: String!
     

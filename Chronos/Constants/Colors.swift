@@ -13,7 +13,7 @@ struct Colors {
     
     static let relaxed = Color.lightGreen.lighten3
     static let stressed = Color.yellow.lighten3
-    static let panicked = Color.deepOrange.lighten3
+    static let panicked = Color.red.darken3
     static let spaceGray = Color.grey.darken3
     
 }

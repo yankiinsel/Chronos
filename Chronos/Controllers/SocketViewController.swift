@@ -16,8 +16,8 @@ class SocketViewController: UIViewController {
     var socket : SocketIOClient!
 
     @IBOutlet weak var sessionCodeLabel: TextField!
-    @IBOutlet weak var createButton: FlatButton!
-    @IBOutlet weak var joinButton: FlatButton!
+    @IBOutlet weak var createButton: RaisedButton!
+    @IBOutlet weak var joinButton: RaisedButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()

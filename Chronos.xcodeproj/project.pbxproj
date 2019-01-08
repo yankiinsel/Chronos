@@ -19,6 +19,7 @@
 		0F94982721A85822005D6965 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F94982621A85822005D6965 /* Enums.swift */; };
 		0F94982D21A85A09005D6965 /* CRTimerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F94982C21A85A09005D6965 /* CRTimerView.xib */; };
 		0F94982F21A8A22E005D6965 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F94982E21A8A22E005D6965 /* Colors.swift */; };
+		0FB84C5121E51AC700CD3BF0 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB84C5021E51AC700CD3BF0 /* GradientView.swift */; };
 		0FCBA19321CE662D00859CEE /* SocketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FCBA19221CE662D00859CEE /* SocketViewController.swift */; };
 		0FCBA19521CEB4F000859CEE /* SocketService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FCBA19421CEB4F000859CEE /* SocketService.swift */; };
 		FBE467743B86DEE966BA0C0B /* Pods_Chronos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3398B64F768E67876974567B /* Pods_Chronos.framework */; };
@@ -39,6 +40,7 @@
 		0F94982621A85822005D6965 /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		0F94982C21A85A09005D6965 /* CRTimerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CRTimerView.xib; sourceTree = "<group>"; };
 		0F94982E21A8A22E005D6965 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		0FB84C5021E51AC700CD3BF0 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		0FCBA19221CE662D00859CEE /* SocketViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketViewController.swift; sourceTree = "<group>"; };
 		0FCBA19421CEB4F000859CEE /* SocketService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketService.swift; sourceTree = "<group>"; };
 		19354A38E15251C0BB9F4114 /* Pods-Chronos.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Chronos.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Chronos/Pods-Chronos.debug.xcconfig"; sourceTree = "<group>"; };
@@ -124,6 +126,7 @@
 			isa = PBXGroup;
 			children = (
 				0F94982321A8579B005D6965 /* CRTimerView.swift */,
+				0FB84C5021E51AC700CD3BF0 /* GradientView.swift */,
 				0F94982B21A859AA005D6965 /* xib */,
 				0F94982121A8574F005D6965 /* NibView.swift */,
 			);
@@ -277,6 +280,7 @@
 			files = (
 				0FCBA19321CE662D00859CEE /* SocketViewController.swift in Sources */,
 				0F273E4121862EF1005D23CD /* TimerViewController.swift in Sources */,
+				0FB84C5121E51AC700CD3BF0 /* GradientView.swift in Sources */,
 				0FCBA19521CEB4F000859CEE /* SocketService.swift in Sources */,
 				0F1C9E9E21CEDF3C00B13B27 /* Notifications.swift in Sources */,
 				0F94982F21A8A22E005D6965 /* Colors.swift in Sources */,

@@ -18,6 +18,8 @@ protocol TimerViewDelegate {
 
 class CRTimerView: NibView {
     
+    var animator: UIViewPropertyAnimator!
+    
     var totalSeconds = 0
     var currentMood = Mood.normal
     var secondsRemaining = 0 {
@@ -37,6 +39,11 @@ class CRTimerView: NibView {
             updateStartPauseButton()
         }
     }
+    var yConstraint: NSLayoutConstraint!
+    var xConstraint: NSLayoutConstraint!
+    var heightConstraint: NSLayoutConstraint!
+    var widthConstraint: NSLayoutConstraint!
+
     
     var timerMode = TimerMode.solo {
         didSet {
@@ -60,11 +67,14 @@ class CRTimerView: NibView {
     // MARK: UI Elements
 
     @IBOutlet weak var timerLabel: UILabel!
-    @IBOutlet weak var startPauseButton: RaisedButton!
-    @IBOutlet weak var cancelButton: RaisedButton!
+    @IBOutlet weak var startPauseButton: FABButton!
+    @IBOutlet weak var cancelButton: FlatButton!
     @IBOutlet weak var timePicker: UIDatePicker!
     
     var delegate: TimerViewDelegate!
+    
+    var gradientView:  GradientView!
+    var testView: UIView!
 
     // MARK: ViewController Lifecycle
 
@@ -73,6 +83,11 @@ class CRTimerView: NibView {
         prepareViews()
         prepareNotifications()
 
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        prepareGradientView()
     }
 
     override func removeFromSuperview() {
@@ -105,6 +120,27 @@ class CRTimerView: NibView {
         updateTimerLabel()
         timerLabel.fontSize = 48
     }
+    
+    fileprivate func prepareGradientView() {
+        
+        gradientView = GradientView()
+        gradientView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height * 10)
+        
+        gradientView.translatesAutoresizingMaskIntoConstraints = false
+        if let delegate = delegate as? TimerViewController {
+            delegate.view.addSubview(gradientView)
+            delegate.view.sendSubviewToBack(gradientView)
+
+            yConstraint = (NSLayoutConstraint(item: delegate.view, attribute: .top, relatedBy: .equal, toItem: gradientView, attribute: .top, multiplier: 1, constant: 0))
+            xConstraint = (NSLayoutConstraint(item: delegate.view, attribute: .left, relatedBy: .equal, toItem: gradientView, attribute: .left, multiplier: 1, constant: 0))
+            widthConstraint = (NSLayoutConstraint(item: delegate.view, attribute: .width, relatedBy: .equal, toItem: gradientView, attribute: .width, multiplier: 1, constant: 0))
+            heightConstraint = NSLayoutConstraint(item: gradientView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: UIScreen.main.bounds.height * 10)
+
+            delegate.view.addConstraints([yConstraint, xConstraint, widthConstraint,])
+            gradientView.addConstraint(heightConstraint)
+        }
+
+    }
 
     // Init Start/Pause Button
     func prepareStartPauseButton() {
@@ -113,7 +149,6 @@ class CRTimerView: NibView {
         startPauseButton.backgroundColor = Colors.spaceGray
         startPauseButton.addTarget(self, action: #selector(startPauseButtonHandler), for: .touchUpInside)
         startPauseButton.depthPreset = .depth4
-        startPauseButton.cornerRadiusPreset = .cornerRadius4
     }
 
     // Init Cancel Button
@@ -152,6 +187,7 @@ class CRTimerView: NibView {
         case .pause:
             buttonMode = .start
             timer.invalidate()
+            animator.pauseAnimation()
             break
         }
         if timerMode == .moderator {
@@ -177,12 +213,22 @@ class CRTimerView: NibView {
 
     // Reset timer
     func resetTimer() {
+        currentMood = .normal
         timer.invalidate()
         secondsRemaining = 0
         totalSeconds = 0
         buttonMode = .start
         isTimerActive = false
+        resetAnimation()
         delegate.changeColor(mood: .normal)
+    }
+    
+    func resetAnimation() {
+        animator.stopAnimation(true)
+        self.yConstraint.constant = 0
+        self.gradientView.layoutIfNeeded()
+        (self.delegate as! TimerViewController).view.layoutIfNeeded()
+        animator = nil
     }
 
     // Start Timer
@@ -193,6 +239,17 @@ class CRTimerView: NibView {
             isTimerActive = true
         }
         
+        if animator == nil {
+
+            animator = UIViewPropertyAnimator(duration: 10, curve: .linear){
+                self.yConstraint.constant = UIScreen.main.bounds.height * 9
+                self.gradientView.layoutIfNeeded()
+                (self.delegate as! TimerViewController).view.layoutIfNeeded()
+                self.animator.startAnimation()
+            }
+        }
+        animator.startAnimation()
+    
         timer = Timer.scheduledTimer(timeInterval: 1, target: self,   selector: (#selector(updateTimer)), userInfo: nil, repeats: true)
     }
 
@@ -251,15 +308,21 @@ class CRTimerView: NibView {
         
         let minutesRemaining = (Double(secondsRemaining)/60)
         let vibrationMilestones:[Double] = [45, 30, 15, 10, 5, 4, 3, 2, 1]
+        let vibrationMilestonesSeconds:[Double] = [45, 30, 15, 10, 5, 4, 3, 2, 1]
+
 
         if (minutesRemaining.truncatingRemainder(dividingBy: 60) == 0) ||
             (vibrationMilestones.contains(minutesRemaining)){
             AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
         }
+        
+        if (vibrationMilestonesSeconds.contains(Double(secondsRemaining))){
+            AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
+        }
     }
     
     func changeColorIfNeeded() {
-        
+        return
         if secondsRemaining == 0 {
             return
         }

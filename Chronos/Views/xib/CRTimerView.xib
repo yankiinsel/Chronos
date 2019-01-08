@@ -19,35 +19,36 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB">
-            <rect key="frame" x="0.0" y="0.0" width="378" height="290"/>
+            <rect key="frame" x="0.0" y="0.0" width="995" height="985"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XAW-0R-Pkg">
-                    <rect key="frame" x="8" y="8" width="362" height="274"/>
+                    <rect key="frame" x="8" y="28" width="979" height="949"/>
                     <subviews>
                         <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="ipH-91-mZO">
-                            <rect key="frame" x="8" y="8" width="346" height="162"/>
+                            <rect key="frame" x="8" y="8" width="963" height="216"/>
                             <date key="date" timeIntervalSinceReferenceDate="564683456.67613006">
                                 <!--2018-11-23 16:30:56 +0000-->
                             </date>
                         </datePicker>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pSA-Cq-Z72" customClass="RaisedButton" customModule="Material">
-                            <rect key="frame" x="8" y="202" width="128" height="64"/>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pSA-Cq-Z72" customClass="FlatButton" customModule="Material">
+                            <rect key="frame" x="425.5" y="909" width="128" height="32"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="128" id="cIu-vO-jvH"/>
+                                <constraint firstAttribute="height" constant="32" id="uZa-nC-iXs"/>
                             </constraints>
                             <state key="normal" title="Button"/>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HPQ-1X-lmN" customClass="RaisedButton" customModule="Material">
-                            <rect key="frame" x="226" y="202" width="128" height="64"/>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HPQ-1X-lmN" customClass="FABButton" customModule="Material">
+                            <rect key="frame" x="179" y="256" width="621" height="621"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="128" id="F3c-4n-8Oo"/>
-                                <constraint firstAttribute="height" constant="64" id="r8B-gx-uez"/>
+                                <constraint firstAttribute="width" priority="250" constant="256" id="9Cr-Xw-h6k"/>
+                                <constraint firstAttribute="width" secondItem="HPQ-1X-lmN" secondAttribute="height" multiplier="1:1" id="ILU-1d-Dlo"/>
                             </constraints>
                             <state key="normal" title="Button"/>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2F7-gP-BOd">
-                            <rect key="frame" x="8" y="8" width="346" height="162"/>
+                            <rect key="frame" x="8" y="8" width="963" height="216"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
@@ -55,19 +56,17 @@
                     </subviews>
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="ipH-91-mZO" secondAttribute="trailing" constant="8" id="2Nz-sa-ROj"/>
-                        <constraint firstItem="HPQ-1X-lmN" firstAttribute="bottom" secondItem="pSA-Cq-Z72" secondAttribute="bottom" id="RBv-1v-Bc4"/>
                         <constraint firstItem="2F7-gP-BOd" firstAttribute="width" secondItem="ipH-91-mZO" secondAttribute="width" id="VLO-LD-XIl"/>
                         <constraint firstItem="ipH-91-mZO" firstAttribute="leading" secondItem="XAW-0R-Pkg" secondAttribute="leading" constant="8" id="WHk-LB-zwR"/>
-                        <constraint firstItem="pSA-Cq-Z72" firstAttribute="leading" secondItem="XAW-0R-Pkg" secondAttribute="leading" constant="8" id="XL5-j3-K9e"/>
                         <constraint firstItem="2F7-gP-BOd" firstAttribute="centerX" secondItem="ipH-91-mZO" secondAttribute="centerX" id="h4v-og-k8H"/>
                         <constraint firstItem="2F7-gP-BOd" firstAttribute="centerY" secondItem="ipH-91-mZO" secondAttribute="centerY" id="i5R-ER-48k"/>
-                        <constraint firstItem="pSA-Cq-Z72" firstAttribute="height" secondItem="HPQ-1X-lmN" secondAttribute="height" id="iHV-jP-qDe"/>
-                        <constraint firstItem="pSA-Cq-Z72" firstAttribute="top" secondItem="ipH-91-mZO" secondAttribute="bottom" constant="32" id="ie4-UV-8Lj"/>
-                        <constraint firstAttribute="trailing" secondItem="HPQ-1X-lmN" secondAttribute="trailing" constant="8" id="pB5-fM-vZl"/>
+                        <constraint firstItem="pSA-Cq-Z72" firstAttribute="top" secondItem="HPQ-1X-lmN" secondAttribute="bottom" constant="32" id="mmg-tW-CM9"/>
                         <constraint firstAttribute="bottom" secondItem="pSA-Cq-Z72" secondAttribute="bottom" constant="8" id="qGh-Iq-n4S"/>
                         <constraint firstItem="ipH-91-mZO" firstAttribute="top" secondItem="XAW-0R-Pkg" secondAttribute="top" constant="8" id="s4B-27-X66"/>
+                        <constraint firstItem="HPQ-1X-lmN" firstAttribute="centerX" secondItem="2F7-gP-BOd" secondAttribute="centerX" id="vgl-7j-0a0"/>
                         <constraint firstItem="HPQ-1X-lmN" firstAttribute="top" secondItem="ipH-91-mZO" secondAttribute="bottom" constant="32" id="xjk-c2-DnJ"/>
                         <constraint firstItem="2F7-gP-BOd" firstAttribute="height" secondItem="ipH-91-mZO" secondAttribute="height" id="y0J-G8-Cyr"/>
+                        <constraint firstItem="pSA-Cq-Z72" firstAttribute="centerX" secondItem="HPQ-1X-lmN" secondAttribute="centerX" id="yL2-BL-Qwq"/>
                     </constraints>
                 </view>
             </subviews>
@@ -79,8 +78,9 @@
             </constraints>
             <nil key="simulatedTopBarMetrics"/>
             <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
-            <point key="canvasLocation" x="132.80000000000001" y="35.982008995502248"/>
+            <point key="canvasLocation" x="50.399999999999999" y="178.56071964017991"/>
         </view>
     </objects>
 </document>

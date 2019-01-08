@@ -30,7 +30,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="43" translatesAutoresizingMaskIntoConstraints="NO" id="2sW-Sj-LfK">
                                 <rect key="frame" x="38" y="295.5" width="299" height="32"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I06-dU-qJh" customClass="FlatButton" customModule="Material">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I06-dU-qJh" customClass="RaisedButton" customModule="Material">
                                         <rect key="frame" x="0.0" y="0.0" width="128" height="32"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="128" id="e39-QY-n0U"/>
@@ -38,7 +38,7 @@
                                         </constraints>
                                         <state key="normal" title="Button"/>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gSY-Ze-tby" customClass="FlatButton" customModule="Material">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gSY-Ze-tby" customClass="RaisedButton" customModule="Material">
                                         <rect key="frame" x="171" y="0.0" width="128" height="32"/>
                                         <state key="normal" title="Button"/>
                                     </button>
@@ -73,17 +73,15 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GxG-bw-QJU" customClass="CRTimerView" customModule="Chronos" customModuleProvider="target">
-                                <rect key="frame" x="8" y="52" width="359" height="312"/>
+                                <rect key="frame" x="8" y="52" width="359" height="583"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="312" id="9gs-1W-yIb"/>
-                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="GxG-bw-QJU" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="32" id="RXO-vx-q3F"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="GxG-bw-QJU" secondAttribute="trailing" constant="8" id="dsA-WI-yKX"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="GxG-bw-QJU" secondAttribute="bottom" constant="32" id="tAP-DR-U8P"/>
                             <constraint firstItem="GxG-bw-QJU" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="8" id="v9p-bC-7rk"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>

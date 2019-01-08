@@ -20,13 +20,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window = UIWindow(frame: UIScreen.main.bounds)
         
         let nav1 = UINavigationController()
+        nav1.navigationBar.isTranslucent = true
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let socketVC = storyboard.instantiateViewController(withIdentifier: "SocketVC") as! SocketViewController
         nav1.viewControllers = [socketVC]
-        
         let timerVC = storyboard.instantiateViewController(withIdentifier: "TimerVC") as! TimerViewController
         timerVC.timerMode = .solo
         let tabBarController = UITabBarController()
+        tabBarController.tabBar.isTranslucent = true
         timerVC.tabBarItem = UITabBarItem(title: "Timer", image: Icon.add, tag: 0)
         nav1.tabBarItem = UITabBarItem(title: "Session", image: Icon.addCircleOutline, tag: 1)
         let controllers = [timerVC, nav1]

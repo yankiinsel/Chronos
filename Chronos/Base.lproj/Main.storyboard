@@ -18,28 +18,28 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TKN-IG-BEh" customClass="TextField" customModule="Material">
-                                <rect key="frame" x="123.5" y="199.5" width="128" height="32"/>
+                                <rect key="frame" x="59.5" y="197" width="256" height="32"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="32" id="fJO-xj-Dre"/>
-                                    <constraint firstAttribute="width" constant="128" id="uDa-HB-mVY"/>
+                                    <constraint firstAttribute="width" constant="256" id="uDa-HB-mVY"/>
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="43" translatesAutoresizingMaskIntoConstraints="NO" id="2sW-Sj-LfK">
-                                <rect key="frame" x="38" y="295.5" width="299" height="32"/>
+                                <rect key="frame" x="38" y="293" width="299" height="64"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I06-dU-qJh" customClass="RaisedButton" customModule="Material">
-                                        <rect key="frame" x="0.0" y="0.0" width="128" height="32"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="128" height="64"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="128" id="e39-QY-n0U"/>
-                                            <constraint firstAttribute="height" constant="32" id="vHL-E6-oz3"/>
+                                            <constraint firstAttribute="height" constant="64" id="vHL-E6-oz3"/>
                                         </constraints>
                                         <state key="normal" title="Button"/>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gSY-Ze-tby" customClass="RaisedButton" customModule="Material">
-                                        <rect key="frame" x="171" y="0.0" width="128" height="32"/>
+                                        <rect key="frame" x="171" y="0.0" width="128" height="64"/>
                                         <state key="normal" title="Button"/>
                                     </button>
                                 </subviews>
@@ -54,6 +54,8 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="34P-mN-dei"/>
                     </view>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="createButton" destination="I06-dU-qJh" id="Se2-c7-Upn"/>
                         <outlet property="joinButton" destination="gSY-Ze-tby" id="WW2-43-IMq"/>
@@ -73,7 +75,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GxG-bw-QJU" customClass="CRTimerView" customModule="Chronos" customModuleProvider="target">
-                                <rect key="frame" x="8" y="52" width="359" height="583"/>
+                                <rect key="frame" x="8" y="96" width="359" height="490"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                         </subviews>
@@ -86,6 +88,8 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="timerView" destination="GxG-bw-QJU" id="lgI-ZP-m6g"/>
                     </connections>

@@ -18,6 +18,8 @@ protocol TimerViewDelegate {
 
 class CRTimerView: NibView {
     
+    var gradientMultiplier: CGFloat = 3
+    
     var animator: UIViewPropertyAnimator!
     
     var totalSeconds = 0
@@ -124,8 +126,7 @@ class CRTimerView: NibView {
     fileprivate func prepareGradientView() {
         
         gradientView = GradientView()
-        gradientView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height * 10)
-        
+        gradientView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height * gradientMultiplier)
         gradientView.translatesAutoresizingMaskIntoConstraints = false
         if let delegate = delegate as? TimerViewController {
             delegate.view.addSubview(gradientView)
@@ -134,7 +135,7 @@ class CRTimerView: NibView {
             yConstraint = (NSLayoutConstraint(item: delegate.view, attribute: .top, relatedBy: .equal, toItem: gradientView, attribute: .top, multiplier: 1, constant: 0))
             xConstraint = (NSLayoutConstraint(item: delegate.view, attribute: .left, relatedBy: .equal, toItem: gradientView, attribute: .left, multiplier: 1, constant: 0))
             widthConstraint = (NSLayoutConstraint(item: delegate.view, attribute: .width, relatedBy: .equal, toItem: gradientView, attribute: .width, multiplier: 1, constant: 0))
-            heightConstraint = NSLayoutConstraint(item: gradientView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: UIScreen.main.bounds.height * 10)
+            heightConstraint = NSLayoutConstraint(item: gradientView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: UIScreen.main.bounds.height * gradientMultiplier)
 
             delegate.view.addConstraints([yConstraint, xConstraint, widthConstraint,])
             gradientView.addConstraint(heightConstraint)
@@ -145,10 +146,15 @@ class CRTimerView: NibView {
     // Init Start/Pause Button
     func prepareStartPauseButton() {
         startPauseButton.setTitle("Start", for: .normal)
-        startPauseButton.titleColor = .white
-        startPauseButton.backgroundColor = Colors.spaceGray
+        startPauseButton.fontSize = 36
+        startPauseButton.titleColor = Colors.spaceGray
+        startPauseButton.backgroundColor = .clear
         startPauseButton.addTarget(self, action: #selector(startPauseButtonHandler), for: .touchUpInside)
-        startPauseButton.depthPreset = .depth4
+        startPauseButton.depthPreset = .depth2
+        startPauseButton.borderColor = Colors.spaceGray
+        startPauseButton.borderWidthPreset = .border3
+        startPauseButton.pulseColor = .white
+
     }
 
     // Init Cancel Button
@@ -224,7 +230,9 @@ class CRTimerView: NibView {
     }
     
     func resetAnimation() {
-        animator.stopAnimation(true)
+        if animator != nil {
+            animator.stopAnimation(true)
+        }
         self.yConstraint.constant = 0
         self.gradientView.layoutIfNeeded()
         (self.delegate as! TimerViewController).view.layoutIfNeeded()
@@ -241,8 +249,8 @@ class CRTimerView: NibView {
         
         if animator == nil {
 
-            animator = UIViewPropertyAnimator(duration: 10, curve: .linear){
-                self.yConstraint.constant = UIScreen.main.bounds.height * 9
+            animator = UIViewPropertyAnimator(duration: TimeInterval(secondsRemaining), curve: .linear){
+                self.yConstraint.constant = UIScreen.main.bounds.height * (self.gradientMultiplier-1)
                 self.gradientView.layoutIfNeeded()
                 (self.delegate as! TimerViewController).view.layoutIfNeeded()
                 self.animator.startAnimation()
@@ -269,9 +277,11 @@ class CRTimerView: NibView {
         switch buttonMode {
         case .start:
             startPauseButton.setTitle("Start", for: .normal)
+            layoutIfNeeded()
             break
         case .pause:
             startPauseButton.setTitle("Pause", for: .normal)
+            layoutIfNeeded()
             break
         }
     }

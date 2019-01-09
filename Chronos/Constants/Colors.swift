@@ -11,10 +11,13 @@ import Material
 
 struct Colors {
     
-    static let relaxed = Color.lightGreen.lighten3
+    static let relaxed = Color.green.lighten2
     static let stressed = Color.yellow.lighten3
     static let panicked = Color.red.darken3
-    static let spaceGray = Color.grey.darken3
+    static let spaceGray = Color.grey.darken4
+    static let primary = Color.blue.lighten3
+    static let secondary = Color.blueGrey.darken4
+
     
 }
 

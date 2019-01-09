@@ -1,32 +1,36 @@
 PODS:
-  - Material (2.16.2):
-    - Material/Core (= 2.16.2)
-  - Material/Core (2.16.2):
-    - Motion (~> 1.4.2)
-  - Motion (1.4.2):
-    - Motion/Core (= 1.4.2)
-  - Motion/Core (1.4.2)
-  - Socket.IO-Client-Swift (13.3.1):
+  - IQKeyboardManagerSwift (6.2.0)
+  - Material (2.16.4):
+    - Material/Core (= 2.16.4)
+  - Material/Core (2.16.4):
+    - Motion (~> 1.4.3)
+  - Motion (1.4.3):
+    - Motion/Core (= 1.4.3)
+  - Motion/Core (1.4.3)
+  - Socket.IO-Client-Swift (13.4.0):
     - Starscream (~> 3.0.2)
   - Starscream (3.0.6)
 
 DEPENDENCIES:
+  - IQKeyboardManagerSwift
   - Material
-  - Socket.IO-Client-Swift (~> 13.3.0)
+  - Socket.IO-Client-Swift
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
+    - IQKeyboardManagerSwift
     - Material
     - Motion
     - Socket.IO-Client-Swift
     - Starscream
 
 SPEC CHECKSUMS:
-  Material: e8cceb3577ae4ee3811ec033a34ab4a3dc8c084c
-  Motion: 93605fd4dffe44203b56949eb0bc73a9521af7b6
-  Socket.IO-Client-Swift: 79f8f85fa44881838175a20f9bd2c32bef2c9d37
+  IQKeyboardManagerSwift: b07ccf9d8cafe993dcd6cb794eb4ba34611a0c4e
+  Material: 4ed78690b09ffd148b5ffab6b4367fb1d8da1cd3
+  Motion: 153ba49692997888556c7a95207278a8b1f8be95
+  Socket.IO-Client-Swift: 2b2720f14c92ff1237ced09bc2f2da2022624fee
   Starscream: ef3ece99d765eeccb67de105bfa143f929026cf5
 
-PODFILE CHECKSUM: c6523e4e1365741a942c9b007972cb2b6502c4c9
+PODFILE CHECKSUM: 6fcfffac1f141074e946cf79f73c693a6643fb15
 
 COCOAPODS: 1.5.0

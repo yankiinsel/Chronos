@@ -8,6 +8,7 @@
 
 import UIKit
 import Material
+import IQKeyboardManagerSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,22 +17,37 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        
+        IQKeyboardManager.shared.enable = true
 
         self.window = UIWindow(frame: UIScreen.main.bounds)
         
-        let nav1 = UINavigationController()
-        nav1.navigationBar.isTranslucent = true
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let socketVC = storyboard.instantiateViewController(withIdentifier: "SocketVC") as! SocketViewController
+        let nav1 = UINavigationController()
+        nav1.navigationBar.isTranslucent = true
+        nav1.navigationBar.barStyle = .blackTranslucent
         nav1.viewControllers = [socketVC]
+        
         let timerVC = storyboard.instantiateViewController(withIdentifier: "TimerVC") as! TimerViewController
         timerVC.timerMode = .solo
+        let nav2 = UINavigationController()
+        nav2.navigationBar.isTranslucent = true
+        nav2.navigationBar.barStyle = .black
+        nav2.viewControllers = [timerVC]
+        
         let tabBarController = UITabBarController()
         tabBarController.tabBar.isTranslucent = true
-        timerVC.tabBarItem = UITabBarItem(title: "Timer", image: Icon.add, tag: 0)
-        nav1.tabBarItem = UITabBarItem(title: "Session", image: Icon.addCircleOutline, tag: 1)
-        let controllers = [timerVC, nav1]
+        tabBarController.tabBar.barStyle = .blackOpaque
+        nav2.tabBarItem = UITabBarItem(title: "Timer", image: Icon.add, tag: 0)
+        nav1.tabBarItem = UITabBarItem(title: "Session", image: Icon., tag: 1)
+        let controllers = [nav2, nav1]
         tabBarController.viewControllers = controllers
+        
+        nav1.navigationBar.tintColor = .white
+        nav2.navigationBar.tintColor = .white
+        tabBarController.tabBar.tintColor = .white
+
         
         self.window!.rootViewController = tabBarController
         

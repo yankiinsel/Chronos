@@ -6,8 +6,10 @@ target 'Chronos' do
   use_frameworks!
 
   # Pods for Chronos
-  pod "Material"
-  pod 'Socket.IO-Client-Swift', '~> 13.3.0'
+  pod 'Material'
+  pod 'Socket.IO-Client-Swift'
+  pod 'IQKeyboardManagerSwift'
+
 
 
 end

@@ -14,6 +14,7 @@ class TimerViewController: UIViewController {
     @IBOutlet var timerView: CRTimerView!
     
     var timerMode = TimerMode.solo
+    var session: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +27,13 @@ class TimerViewController: UIViewController {
     
     fileprivate func prepareViews() {
         view.backgroundColor = .white
+        if timerMode == .solo {
+            title = "Timer"
+        } else {
+            if let session = session {
+                title = session
+            }
+        }
     }
     
     override func viewDidLayoutSubviews() {

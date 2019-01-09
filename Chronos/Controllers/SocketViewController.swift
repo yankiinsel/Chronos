@@ -24,7 +24,18 @@ class SocketViewController: UIViewController {
         createSocket()
         prepareButtons()
         prepareTextField()
-        //prepareNotifications()
+        prepareView()
+    }
+    
+    private func prepareView() {
+        title = "Session"
+        let gradientView = GradientView()
+        gradientView.startColor = Colors.primary
+        gradientView.endColor = Colors.secondary
+        gradientView.diagonalMode = true
+        gradientView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+        view.addSubview(gradientView)
+        view.sendSubviewToBack(gradientView)
     }
 
     
@@ -38,10 +49,39 @@ class SocketViewController: UIViewController {
         
         createButton.addTarget(self, action: #selector(createButtonHandler), for: .touchUpInside)
         joinButton.addTarget(self, action: #selector(joinButtonHandler), for: .touchUpInside)
+        
+        createButton.tintColor = Colors.secondary
+        createButton.titleColor = .white
+        createButton.pulseColor = .white
+        createButton.backgroundColor = Colors.secondary
+        createButton.heightPreset = .medium
+        createButton.cornerRadiusPreset = .cornerRadius4
+        createButton.depthPreset = .depth3
+        createButton.fontSize = 18
+        
+        joinButton.tintColor = Colors.secondary
+        joinButton.titleColor = .white
+        joinButton.pulseColor = .white
+        joinButton.backgroundColor = Colors.secondary
+        joinButton.heightPreset = .medium
+        joinButton.cornerRadiusPreset = .cornerRadius4
+        joinButton.depthPreset = .depth3
+        joinButton.fontSize = 18
+
+
+
     }
     
     private func prepareTextField() {
-        sessionCodeLabel.placeholder = "Room no."
+        sessionCodeLabel.placeholder = "Enter session name"
+        sessionCodeLabel.tintColor = .white
+        sessionCodeLabel.detailColor = .white
+        sessionCodeLabel.textColor = .white
+        sessionCodeLabel.dividerNormalColor = .white
+        sessionCodeLabel.dividerActiveColor = .white
+        sessionCodeLabel.placeholderActiveColor = .white
+        sessionCodeLabel.placeholderNormalColor = .white
+
     }
     
     private func joinRoom() {
@@ -53,18 +93,29 @@ class SocketViewController: UIViewController {
     }
     
     @objc func joinButtonHandler() {
+
+        guard let session = sessionCodeLabel.text, !session.isEmpty else {
+            return
+        }
+        
         joinRoom()
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let timerVC = storyboard.instantiateViewController(withIdentifier: "TimerVC") as! TimerViewController
         timerVC.timerMode = .presenter
+        timerVC.session = session
         navigationController?.pushViewController(timerVC, animated: true)
     }
     
     @objc func createButtonHandler() {
+        guard let session = sessionCodeLabel.text, !session.isEmpty else {
+            return
+        }
+        
         joinRoom()
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let timerVC = storyboard.instantiateViewController(withIdentifier: "TimerVC") as! TimerViewController
         timerVC.timerMode = .moderator
+        timerVC.session = session
         navigationController?.pushViewController(timerVC, animated: true)
     }
 }

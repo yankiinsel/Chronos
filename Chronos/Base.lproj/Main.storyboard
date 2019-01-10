@@ -44,11 +44,23 @@
                                     </button>
                                 </subviews>
                             </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gcH-2e-Ihf">
+                                <rect key="frame" x="123.5" y="562" width="128" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="128" id="3ys-Ph-Rs7"/>
+                                    <constraint firstAttribute="height" constant="24" id="M97-R8-T0V"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="34P-mN-dei" firstAttribute="bottom" secondItem="gcH-2e-Ihf" secondAttribute="bottom" constant="32" id="2MT-SU-fMh"/>
                             <constraint firstItem="2sW-Sj-LfK" firstAttribute="top" secondItem="TKN-IG-BEh" secondAttribute="bottom" constant="64" id="6nn-b4-Xlm"/>
                             <constraint firstItem="TKN-IG-BEh" firstAttribute="centerX" secondItem="34P-mN-dei" secondAttribute="centerX" id="F98-zJ-NXo"/>
+                            <constraint firstItem="gcH-2e-Ihf" firstAttribute="centerX" secondItem="34P-mN-dei" secondAttribute="centerX" id="Nrb-IB-SU4"/>
                             <constraint firstItem="TKN-IG-BEh" firstAttribute="centerY" secondItem="34P-mN-dei" secondAttribute="centerY" constant="-128" id="SNr-bH-Ncq"/>
                             <constraint firstItem="2sW-Sj-LfK" firstAttribute="centerX" secondItem="TKN-IG-BEh" secondAttribute="centerX" id="YAZ-Db-X78"/>
                         </constraints>
@@ -57,6 +69,7 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="connectionLabel" destination="gcH-2e-Ihf" id="Q08-Qn-k1F"/>
                         <outlet property="createButton" destination="I06-dU-qJh" id="Se2-c7-Upn"/>
                         <outlet property="joinButton" destination="gSY-Ze-tby" id="WW2-43-IMq"/>
                         <outlet property="sessionCodeLabel" destination="TKN-IG-BEh" id="DKa-wr-zTu"/>

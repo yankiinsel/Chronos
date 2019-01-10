@@ -9,6 +9,7 @@
 import UIKit
 import Material
 import IQKeyboardManagerSwift
+import SwiftIcons
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -39,8 +40,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let tabBarController = UITabBarController()
         tabBarController.tabBar.isTranslucent = true
         tabBarController.tabBar.barStyle = .blackOpaque
-        nav2.tabBarItem = UITabBarItem(title: "Timer", image: Icon.add, tag: 0)
-        nav1.tabBarItem = UITabBarItem(title: "Session", image: Icon., tag: 1)
+        
+        let icon1 = UIImage.init(icon: .googleMaterialDesign(.alarm), size: CGSize(width: 35, height: 35))
+        let icon2 = UIImage.init(icon: .googleMaterialDesign(.group), size: CGSize(width: 35, height: 35))
+        
+        nav2.tabBarItem = UITabBarItem(title: "Timer", image: icon1, tag: 0)
+        nav1.tabBarItem = UITabBarItem(title: "Session", image: icon2, tag: 1)
+
         let controllers = [nav2, nav1]
         tabBarController.viewControllers = controllers
         

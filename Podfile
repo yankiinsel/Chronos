@@ -9,7 +9,7 @@ target 'Chronos' do
   pod 'Material'
   pod 'Socket.IO-Client-Swift'
   pod 'IQKeyboardManagerSwift'
-
+  pod 'SwiftIcons'
 
 
 end

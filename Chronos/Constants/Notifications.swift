@@ -11,5 +11,10 @@ import Foundation
 struct Notifications {
     static let startPauseTimer = Notification(name: Notification.Name(rawValue: "startPauseTimer"))
     static let cancelTimer = Notification(name: Notification.Name(rawValue: "cancelTimer"))
+    static let connected = Notification(name: Notification.Name(rawValue: "connected"))
+    static let joinedRoomMod = Notification(name: Notification.Name(rawValue: "joinedRoomMod"))
+    static let joinedRoomPrsntr = Notification(name: Notification.Name(rawValue: "joinedRoomPrsntr"))
+
+
 
 }

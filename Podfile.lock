@@ -10,11 +10,13 @@ PODS:
   - Socket.IO-Client-Swift (13.4.0):
     - Starscream (~> 3.0.2)
   - Starscream (3.0.6)
+  - SwiftIcons (2.3.2)
 
 DEPENDENCIES:
   - IQKeyboardManagerSwift
   - Material
   - Socket.IO-Client-Swift
+  - SwiftIcons
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
@@ -23,6 +25,7 @@ SPEC REPOS:
     - Motion
     - Socket.IO-Client-Swift
     - Starscream
+    - SwiftIcons
 
 SPEC CHECKSUMS:
   IQKeyboardManagerSwift: b07ccf9d8cafe993dcd6cb794eb4ba34611a0c4e
@@ -30,7 +33,8 @@ SPEC CHECKSUMS:
   Motion: 153ba49692997888556c7a95207278a8b1f8be95
   Socket.IO-Client-Swift: 2b2720f14c92ff1237ced09bc2f2da2022624fee
   Starscream: ef3ece99d765eeccb67de105bfa143f929026cf5
+  SwiftIcons: e652cfd2676441c462ad57b6e92977faf577e590
 
-PODFILE CHECKSUM: 6fcfffac1f141074e946cf79f73c693a6643fb15
+PODFILE CHECKSUM: c5b109c3cdd45ef35e903fbcd0da904f62224ef6
 
 COCOAPODS: 1.5.0

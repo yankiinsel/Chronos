@@ -28,13 +28,38 @@ io.on('connection', (socket) => {
         io.sockets.in(room).emit('cancelButtonHandler');
     });
 
-    socket.on('room', (room) => {
+    socket.on('roomPrsntr', (room) => {
         if (currentRoom) {
             socket.leave(currentRoom);
         }
 
-        socket.join(room);
+        console.log('someone trying to join room ' + room);
+
+        socket.join(room, () => {
+            console.log('someone joined room ' + room);
+            io.sockets.in(room).emit('roomJoinedPrsntr');
+        });
         currentRoom = room
+    });
+
+    socket.on('roomMod', (room) => {
+        if (currentRoom) {
+            socket.leave(currentRoom);
+        }
+
+        console.log('someone trying to join room ' + room);
+
+        socket.join(room, () => {
+            console.log('someone joined room ' + room);
+            io.sockets.in(room).emit('roomJoinedMod');
+        });
+        currentRoom = room;
+    });
+
+    socket.on('leaveRoom', () => {
+        if (currentRoom) {
+            socket.leave(currentRoom);
+        }
     });
 });
 
